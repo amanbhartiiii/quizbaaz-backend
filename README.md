@@ -1,2 +1,2 @@
 # quizbaaz-backend
-A REST API for backend for quiz application.
+A REST API backend for quiz application.
