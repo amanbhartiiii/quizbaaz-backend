@@ -1,5 +1,6 @@
 package com.bharti.quizbaaz_backend.service.imp;
 
+import com.bharti.quizbaaz_backend.dto.LoginRequest;
 import com.bharti.quizbaaz_backend.entity.User;
 import com.bharti.quizbaaz_backend.repository.UserRepo;
 import com.bharti.quizbaaz_backend.service.UserService;
@@ -28,7 +29,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public Boolean validateUser(User user, User dbUser) {
-        return user.getPassword().equals(dbUser.getPassword());
+    public Boolean validateUser(LoginRequest loginRequest, User user) {
+        return loginRequest.getPassword().equals(user.getPassword());
     }
 }
