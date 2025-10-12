@@ -1,5 +1,6 @@
 package com.bharti.quizbaaz_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class Question {
     private String topic;
     private String difficulty;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Option> options = new ArrayList<>();
 }
