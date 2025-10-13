@@ -45,7 +45,21 @@ public class QuestionServiceImp implements QuestionService {
     }
 
     @Override
-    public List<QuestionDto> getQuestionBySub(String subject) {
-        return List.of();
+    public List<QuestionDto> getFilteredQuestion(String subject, String topic, String difficulty) {
+        List<Question> questions;
+
+        // Dynamic filter logic
+        if(subject != null && topic != null && difficulty != null) {
+            questions = questionRepo.findBySubjectAndTopicAndDifficulty(subject, topic, difficulty);
+        } else if (subject != null && topic != null) {
+            questions = questionRepo.findBySubjectAndTopic(subject, topic);
+        } else if (subject != null && difficulty != null) {
+            questions = questionRepo.findBySubjectAndDifficulty(subject, difficulty);
+        } else if (subject != null) {
+            questions = questionRepo.findBySubject(subject);
+        } else {
+            questions = questionRepo.findAll();
+        }
+        return questions.stream().map(question -> modelMapper.map(question, QuestionDto.class)).toList();
     }
 }

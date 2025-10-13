@@ -7,5 +7,5 @@ import java.util.List;
 public interface QuestionService {
     QuestionDto addQuestion(QuestionDto questionDto);
     List<QuestionDto> getAllQuestions();
-    List<QuestionDto> getQuestionBySub(String subject);
+    List<QuestionDto> getFilteredQuestion(String subject, String topic, String difficulty);
 }

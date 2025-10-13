@@ -21,9 +21,15 @@ public class QuestionController {
         return new ResponseEntity<>(newQuestion, HttpStatus.CREATED);
     }
 
-    @GetMapping("/")
+    @GetMapping("/all")
     public ResponseEntity<List<QuestionDto>> getQuestions(){
         List<QuestionDto> questions = questionService.getAllQuestions();
+        return new ResponseEntity<>(questions, HttpStatus.FOUND);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<List<QuestionDto>> getQuestions(@RequestParam(required = true) String subject, @RequestParam(required = false) String topic, @RequestParam(required = false) String difficulty){
+        List<QuestionDto> questions = questionService.getFilteredQuestion(subject, topic, difficulty);
         return new ResponseEntity<>(questions, HttpStatus.FOUND);
     }
 }
