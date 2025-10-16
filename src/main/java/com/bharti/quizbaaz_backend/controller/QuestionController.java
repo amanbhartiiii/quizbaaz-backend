@@ -32,4 +32,10 @@ public class QuestionController {
         List<QuestionDto> questions = questionService.getFilteredQuestion(subject, topic, difficulty);
         return new ResponseEntity<>(questions, HttpStatus.FOUND);
     }
+
+    @GetMapping("/{subject}")
+    public ResponseEntity<List<String>> getTopicsBySubject(@PathVariable String subject) {
+        List<String> topics = questionService.getTopicsBySubject(subject);
+        return new ResponseEntity<>(topics, HttpStatus.OK);
+    }
 }

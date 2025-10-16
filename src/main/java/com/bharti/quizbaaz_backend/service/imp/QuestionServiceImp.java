@@ -62,4 +62,9 @@ public class QuestionServiceImp implements QuestionService {
         }
         return questions.stream().map(question -> modelMapper.map(question, QuestionDto.class)).toList();
     }
+
+    @Override
+    public List<String> getTopicsBySubject(String subject) {
+        return questionRepo.findTopicsBySubject(subject);
+    }
 }

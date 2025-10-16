@@ -8,4 +8,6 @@ public interface QuestionService {
     QuestionDto addQuestion(QuestionDto questionDto);
     List<QuestionDto> getAllQuestions();
     List<QuestionDto> getFilteredQuestion(String subject, String topic, String difficulty);
+
+    List<String> getTopicsBySubject(String subject);
 }
