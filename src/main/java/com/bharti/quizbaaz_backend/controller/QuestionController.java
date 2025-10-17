@@ -33,6 +33,8 @@ public class QuestionController {
         return new ResponseEntity<>(questions, HttpStatus.FOUND);
     }
 
+
+    // Get All Topics of a particular subject
     @GetMapping("/{subject}")
     public ResponseEntity<List<String>> getTopicsBySubject(@PathVariable String subject) {
         List<String> topics = questionService.getTopicsBySubject(subject);
